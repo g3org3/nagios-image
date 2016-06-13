@@ -63,4 +63,5 @@ RUN ln -s /etc/apache2/sites-available/nagios.conf /etc/apache2/sites-enabled/
 RUN ln -s /etc/init.d/nagios /etc/rcS.d/S99nagios
 
 COPY ./app/index.php /var/www/html/index.php
+COPY ./var/init.sh /var/local/init.sh
 WORKDIR /var/local/
