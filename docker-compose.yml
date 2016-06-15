@@ -6,7 +6,22 @@ nagios:
     - db
   volumes:
     - ./var:/var/local
+    - ./servers:/usr/local/nagios/etc/servers/
 db:
   image: tutum/mysql
   ports:
     - 3306:3306
+
+ntop:
+  build: ntop/
+  ports:
+    - 8080:8080
+    - 8001:3002
+
+nagios2:
+  image: nixel/docker-nagios
+  ports:
+    - 8081:80
+  environment:
+    - NAGIOSADMIN_USER=nagiosadmin
+    - NAGIOSAMDIN_PASS=nagios
